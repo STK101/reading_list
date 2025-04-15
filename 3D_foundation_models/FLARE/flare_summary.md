@@ -1,0 +1,15 @@
+## 1. Model Description in a Single Line 
+FLARE is a feed-forward model that simultaneously recovers high-quality camera poses, 3D geometry, and appearance from uncalibrated sparse-view images (as few as 2-8 inputs) within 0.5 seconds.
+## 2. Important Ideas Behind the Model - 
+Uses a cascaded learning paradigm with camera pose as the critical bridge between 2D images and 3D reconstruction - Employs a two-stage geometry learning approach: first estimating camera-centric geometry in local frames, then projecting to global coordinates - Leverages 3D Gaussians for appearance modeling to enable photorealistic novel view synthesis - Introduces a neural pose predictor that directly estimates camera poses without requiring feature matching - Implements a confidence-aware geometry estimation process that handles imperfect pose estimates - Utilizes a transformer-based architecture to refine poses and compute 3D pointmaps 
+## 3. Authors' Expectations from the Model 
+The authors expect FLARE to solve the challenging yet practical problem of 3D reconstruction from uncalibrated sparse-view images, providing a comprehensive solution that combines scalability, accuracy, and efficiency in camera, geometry, and appearance estimation without requiring dense image views, accurate camera poses, or wide baselines.
+## 4. Benefits Over Previous Models and Quantitative Advances 
+- **Speed**: Achieves inference in less than 0.5 seconds, substantially faster than optimization-based methods 
+-  **No Pose Requirements**: Unlike many previous methods, FLARE doesn't require pre-calibrated camera poses 
+-  **Sparse View Capability**: Works effectively with as few as 2-8 input images, while traditional SfM-MVS methods struggle with sparse views. Also, traditional SfM techniques rely on handcrafted feature matching (SIFT) and are non-differentiable hence, can't be used along with deep learning.
+- **Quantitative Advances in Pose Estimation**: - Achieves 84.6% AUC@30° on RealEstate10K, outperforming PoseDiffusion (78.2%) and VGGSfM (72.1%) - Superior RRA@5° (0.97) and RTA@5° (0.74) compared to other methods 
+- **Geometry Reconstruction Improvements**: - Lower Chamfer distance on DTU (3.1152), ETH3D (0.4978), and TUM RGBD (0.2048) datasets compared to DUSt3R, MASt3R, and Spann3R
+- **Novel View Synthesis Performance**: - On DL3DV: PSNR of 23.33, SSIM of 0.746 with 8 views, outperforming CoPoNeRF, pixelSplat, and MVSplat - On RealEstate10K: PSNR of 23.765, SSIM of 0.801, LPIPS of 0.191, surpassing both pose-required methods (MVSplat: 22.568 PSNR) and pose-free methods (CoPoNeRF: 19.843 PSNR) 
+- **Generalization**: Demonstrates robust performance across diverse scenes including objects, indoor environments, and outdoor settings
+- **Critique of other SoTA** : VGGSfM good as it does multi-view tracking and differentiable BA but can't provide dense geometry. DUSt3R family performs test-time optimisation which leads to slower outputs and at times suboptimal quality
