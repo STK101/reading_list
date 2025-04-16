@@ -1,0 +1,15 @@
+![[Pasted image 20250415230147.png]]![[Pasted image 20250415230435.png]]![[Pasted image 20250415230603.png]]
+![[Pasted image 20250415230743.png]]
+![[Pasted image 20250415230904.png]]![[Pasted image 20250415231125.png]]
+![[Pasted image 20250415231153.png]]
+![[Pasted image 20250415231224.png]]
+![[Pasted image 20250415231240.png]]
+Instead of finding the exact areas covered by each triangle and taking weighted sum (hard to compute), we use sampling
+![[Pasted image 20250415231428.png]]
+![[Pasted image 20250415231646.png]]
+Because signal is not sampled enough, linear interpolation is really bad signal. Higher sampling = less chance of missing information
+![[Pasted image 20250415231746.png]]
+![[Pasted image 20250415231807.png]]
+![[Pasted image 20250415231957.png]]![[Pasted image 20250415232017.png]]
+![[Pasted image 20250415232128.png]]
+![[Pasted image 20250415232408.png]]![[Pasted image 20250415232419.png]]
